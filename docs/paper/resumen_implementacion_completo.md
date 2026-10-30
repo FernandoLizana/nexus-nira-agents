@@ -151,7 +151,7 @@ Ensambles indexados en disco (~90M neuronas virtuales posibles con 12 GB). LSH +
 |--------|---------|
 | `companion.py` | Agente social "Nira" |
 | `journey.py` | Hero's journey |
-| `tarot.py` | Lecturas con memoria |
+| `archetype_cards.py` | Cartas de arquetipo con memoria |
 | `curriculum.py` | Estudio neurociencia |
 | `library.py`, `learning_hub.py` | Libros y aprendizaje |
 | `imagination.py` | Imaginación interna |

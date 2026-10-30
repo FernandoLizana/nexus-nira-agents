@@ -294,7 +294,7 @@ def write_manuscript_facts() -> None:
     text = f"""# MANUSCRIPT_FACTS — Adaptive Behavior (NEXO)
 
 Author: Fernando Andrés Lizana Núñez  
-Affiliation: Digital Rider SpA, Chile  
+Affiliation: Independent researcher, Chile  
 ORCID: **AUTHOR TO CONFIRM**  
 Funding: **AUTHOR TO CONFIRM** (none invented)  
 Corresponding email: **AUTHOR TO CONFIRM**  

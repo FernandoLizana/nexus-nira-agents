@@ -380,7 +380,7 @@ Genera CSV en `experiments/results/`, figuras en `experiments/figures/`.
 ### 7.2 Limitaciones
 
 - **Escala meso:** ~10k neuronas no pretenden fidelidad biológica completa.
-- **Mundo 2D ecológico:** tarot, currículum y UI Flask son demos, no evidencia principal.
+- **Mundo 2D ecológico:** cartas de arquetipo, currículum y UI Flask son demos, no evidencia principal.
 - **GPU subutilizada:** spmv sparse + transferencias CPU↔GPU limitan % en Task Manager; cuello de botella en lógica Python del mundo.
 - **E3 recall modesto:** métrica de similitud patrón sensible al tamaño sensorial; efecto sueño pequeño pero monótono.
 - **Determinismo full E1:** σ=0 entre seeds sugiere paisaje dinámico rígido — explorar más seeds o ruido controlado en futuro.

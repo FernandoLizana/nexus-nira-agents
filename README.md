@@ -396,7 +396,7 @@ El ZIP sale en `dist/` con `SHA256SUMS.txt`. No incluye bibliotecas PDF ni estad
 - No hay servicio alojado ni alta de usuarios.
 - El teléfono físico y un TLS de producción no forman parte del arranque por defecto. Hace falta una red y un certificado que elijas tú.
 - Las cartas de símbolo y los arquetipos son mecanismos de laboratorio, no una lectura de personalidad.
-- `publication_finalization/relevant_source/` es una instantánea congelada de un artículo. No es el código que debes modificar ni ejecutar.
+- La copia del código citada en el artículo se genera con `publication_finalization/scripts/pack_final.py`. No está versionada.
 
 Lista ampliada: [`KNOWN_LIMITATIONS.md`](KNOWN_LIMITATIONS.md).
 

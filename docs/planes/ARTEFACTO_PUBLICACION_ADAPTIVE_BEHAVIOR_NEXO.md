@@ -5,7 +5,7 @@
 | **Target journal** | *Adaptive Behavior* (SAGE) — Article |
 | **Project** | Nexo (repository: `cerebro`) |
 | **Author** | Fernando Andrés Lizana Núñez |
-| **Affiliation** | Digital Rider SpA, Chile |
+| **Affiliation** | Independent researcher, Chile |
 | **Artifact version** | 1.0 |
 | **Audit date** | 2026-07-22 |
 | **Results cutoff** | July 2026 (E1–E3 CSV June 2026; E4/E5/E7 + Arena present) |
@@ -649,7 +649,7 @@ The paper addresses how an artificial agent can adaptively select actions under 
 
 We believe the work fits the journal’s interest in adaptive and embodied artificial agents. The manuscript is original, not under consideration elsewhere, and involves no human-subjects research. Code and experimental CSV/JSON will be made available upon publication [DETAIL REQUIRED: public repository URL].
 
-Corresponding author: Fernando Andrés Lizana Núñez, Digital Rider SpA, Chile. Email: [DETAIL REQUIRED].
+Corresponding author: Fernando Andrés Lizana Núñez, Independent researcher, Chile. Email: [DETAIL REQUIRED].
 
 Sincerely,  
 Fernando Andrés Lizana Núñez
@@ -662,7 +662,7 @@ Fernando Andrés Lizana Núñez
 F.A.L.N. conceived the architecture, implemented the system, ran experiments, and wrote the manuscript.
 
 ## Declaration of Conflicting Interest
-The author declares no conflicting interests. [DETAIL REQUIRED if Digital Rider SpA commercial interests apply.]
+The author declares no conflicting interests.
 
 ## Funding
 [DETAIL REQUIRED — state “none” if none.]
@@ -692,7 +692,7 @@ Generative AI tools (including Cursor agent models and related assistants) were 
 
 # 31. Author Biography
 
-Fernando Andrés Lizana Núñez is affiliated with Digital Rider SpA, Chile. He develops NEXO (`cerebro`), a research prototype of an embodied, neuro-inspired cognitive architecture for studying homeostatic drives, deliberative action selection, and agency-preserving learning signals in simulated environments. Correspondence: Digital Rider SpA, Chile. [DETAIL REQUIRED: contact email.]
+Fernando Andrés Lizana Núñez is an independent researcher in Chile. He develops NEXO (`cerebro`), a research prototype of an embodied, neuro-inspired cognitive architecture for studying homeostatic drives, deliberative action selection, and agency-preserving learning signals in simulated environments. Correspondence: [DETAIL REQUIRED: contact email.]
 
 *(≈70 words; no degrees, awards, or publications invented.)*
 

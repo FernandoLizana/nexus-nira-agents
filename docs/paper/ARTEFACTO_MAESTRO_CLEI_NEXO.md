@@ -335,7 +335,7 @@ At demo default 12 GB budget: ~40.3M assemblies × 20 ≈ **806M logical neurons
 | `profile.py` | `NeuroProfile` | Scale profiles | Neuron counts | **EI** | shared |
 | `backend.py` | GPU backend | — | CuPy acceleration | **EI** | shared |
 | `companion.py` | `Companion` | Social agent Nira | Proximity events | no | **DM** |
-| `tarot.py` | tarot draw | — | Narrative toy | no | **DM** |
+| `archetype_cards.py` | archetype card draw | — | Narrative toy | no | **DM** |
 | `journey.py` | journey arcs | — | Narrative progression | no | **DM** |
 | `curriculum.py` | study sections | Education | Neuro curriculum | no | **DM** |
 | `brain_facts.py` | chapters | Education | Brain facts study | no | **DM** |

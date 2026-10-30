@@ -56,4 +56,4 @@ Figures: `experiments/plot_figures.py` targets `experiments/figures/fig1–fig9`
 
 ## Author (only)
 
-Fernando Andrés Lizana Núñez, Digital Rider SpA, Chile.
+Fernando Andrés Lizana Núñez, investigador independiente, Chile.

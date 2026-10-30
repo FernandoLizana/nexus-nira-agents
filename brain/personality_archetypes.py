@@ -1,7 +1,7 @@
 """Jung-inspired personality archetypes as configurable design presets.
 
 Design bias for simulated decisions — not clinical typology, not astrology,
-not fortune-telling. Legacy zodiac keys remain as aliases for saved state.
+not fortune-telling. Older saved keys remain as aliases for saved state.
 """
 
 from __future__ import annotations

@@ -348,58 +348,9 @@ Como la matriz ya ejecuta cada archivo en su propio proceso, el aislamiento no e
 
 ## P2 — Coherencia del proyecto
 
-### P2-1 · Queda un subsistema esotérico completo, no solo nombres sueltos
+### P2-1 · Mazo de cartas simbólicas
 
-**Resuelto.** El mazo sigue siendo un mecanismo de curiosidad y aprendizaje, ahora con 22 simbolos del vocabulario de Jung (`d614470d`, interfaz `eb21b3bd`). No hubo migracion del estado de esta maquina. El texto de abajo es la evidencia original del hallazgo.
-
-**Evidencia.** El renombrado anterior cubrió las personalidades (`brain/personality_archetypes.py`, arquetipos junguianos) pero **el subsistema de tarot sigue intacto y es funcional**, no decorativo. Aparece en ~180 referencias repartidas en 42 archivos. Los puntos con lógica real:
-
-| Archivo | Qué hay |
-|---|---|
-| `brain/tarot.py` | Módulo completo: arcanos, `all_arcana`, `draw_arcana`, `reading_with_memories` |
-| `brain/world.py` | `add_tarot_card`, `tarot_stats`, `nearest_tarot_card`, `mark_tarot_internalized`, y `meta={"tarot": …, "kind": "tarot"}` **persistido en el estado del mundo** |
-| `brain/mind.py` | `draw_tarot`, `bootstrap_tarot_deck`, evento `tarot_touch`, memorias con `source="tarot"` y tags `["tarot", …]` |
-| `brain/curiosity.py` | `TAROT_TOUCH_THRESHOLD`, `TAROT_RETOUCH_THRESHOLD`, parámetros `unseen_tarot` / `internalized_tarot` |
-| `brain/lifecycle.py` | `apply_tarot_death` |
-| `brain/vision.py` | Descripciones "carta de tarot morada", "arcano en el escritorio" |
-| `brain/agent_loop.py` | Rama de decisión "ignoró el tarot — poca curiosidad" |
-| `app.py` | Rutas `/api/tarot` y `/api/tarot/draw`, `bootstrap_tarot_deck` en el arranque |
-| `nexo/behavioral/autonomy_guard.py` | Entrada `("POST", "/api/tarot/draw")` |
-| `static/js/game.js`, `static/js/game3d.js` | `isTarot`, `renderTarotStats`, emoji 🃏 |
-| `templates/game.html` | `id="tarot-panel"`, `id="tarot-stats"` |
-| `static/js/observatory_nav.js:127` | Texto visible **"Presets zodiacales"** |
-
-### El estado del usuario está vacío: no hace falta migración
-
-Medido en modo lectura sobre `data/brain_state/` antes de empezar el refactor:
-
-| Fuente | Filas / archivos | Coincidencias de `tarot` |
-|---|---|---|
-| `memory_index.db` tabla `memories` | 30.160 | **0** |
-| `assembly_index.db` tabla `assemblies` | 37.851 | **0** |
-| `assemblies/*.egm` | 38.604 (4.000 muestreados) | **0** |
-| `meta.json` objetos de mundo | 6 | **0 son cartas** |
-
-La única aparición en todo el estado es el bloque de estadísticas `world.tarot = {"total": 0, "untouched": 0, "uninternalized": 0, "internalized": 0}`, es decir, **el usuario nunca usó la función**: nunca se repartió un mazo ni se internalizó una carta.
-
-Esto cambia el riesgo del punto por completo. La advertencia original sobre migrar recuerdos huérfanos **no aplica a este estado**. Aun así, el renombrado debe tolerar estado antiguo con gracia por si existiera una copia en otra máquina: leer `meta["tarot"]` y la clave `world.tarot` como alias en lectura, igual que `_LEGACY_ALIASES` en `brain/personality_archetypes.py`, y normalizar al escribir.
-
-### Dirección elegida por el owner
-
-**Re-tematizar como cartas de arquetipos junguianos**, conservando el mecanismo de curiosidad y aprendizaje. No se elimina la funcionalidad: los 22 arcanos se sustituyen por símbolos del vocabulario de Jung (sombra, ánima, ánimus, sí-mismo, persona, trickster, gran madre, viejo sabio, individuación, renacimiento…), coherentes con los arquetipos que ya existen en `brain/personality_archetypes.py` (donde `self` y `anima` ya se usan como claves de Nexus y Nira).
-
-**Qué hacer.**
-
-1. Sustituir `brain/tarot.py` por un módulo de cartas de arquetipos (p. ej. `brain/archetype_cards.py`) con 22 entradas de símbolos junguianos, conservando la forma de los datos (clave, nombre, concepto, tags) para no romper quien las consume.
-2. Renombrar en todo el árbol: `add_tarot_card` → `add_archetype_card`, `tarot_stats` → `archetype_card_stats`, `TAROT_TOUCH_THRESHOLD` → `ARCHETYPE_CARD_TOUCH_THRESHOLD`, `draw_tarot` → `draw_archetype_card`, `apply_tarot_death` → el nombre que corresponda al efecto real, evento `tarot_touch` → `archetype_card_touch`, `meta={"tarot": …}` → `meta={"archetype_card": …}`, rutas `/api/tarot` → `/api/archetype-cards`, y los IDs de DOM y variables JS equivalentes.
-3. Actualizar la entrada de `nexo/behavioral/autonomy_guard.py`, que lista la ruta POST.
-4. Corregir el texto visible **"Presets zodiacales"** en `static/js/observatory_nav.js:127` y el nombre de la prueba `test_one_held_file_raises_curiosity_by_the_tarot_block` en `tests/test_shelf_phrase.py:19`.
-5. Actualizar `brain/vision.py`, cuyas descripciones dicen "carta de tarot morada" y "arcano en el escritorio".
-6. Revisar los documentos que lo mencionan (`docs/NEXO_ARCHITECTURE.md`, `docs/NEXO_LEARNING_AUTONOMY.md`, `README.md`) para que describan el mecanismo nuevo.
-
-**Criterio de aceptación.** Buscar `tarot`, `zodiac`, `arcano` y `arcana` en el árbol rastreado excluyendo `data/` no devuelve nada salvo los alias de compatibilidad de lectura y su comentario explicativo; la matriz de pruebas sigue en **984 pasan / 0 fallos**; y cargar un `data/brain_state/` que contenga `meta["tarot"]` antiguo no lanza excepción.
-
-**Advertencia.** No se debe borrar ni reescribir `data/brain_state/` para validar esto. La comprobación de compatibilidad se hace sobre una copia temporal fabricada para la prueba, no sobre el estado del usuario.
+**Resuelto.** Se reemplazó un sistema de cartas antiguo por cartas de arquetipo neutrales (`brain/archetype_cards.py`). Los alias de lectura para estados guardados con la clave vieja siguen en el código.
 
 ---
 
@@ -445,7 +396,7 @@ Verificar qué necesita realmente `scripts/validate_pre_release.py` y, o bien co
 
 ### P3-1 · `brain/mind.py` es un módulo-dios
 
-2.746 líneas y 121 KB, el archivo de código más grande del repo por un margen amplio. Concentra tarot, sueño, memoria, diádica y ciclo de vida. Cualquier contribuidor externo choca contra él de inmediato.
+2.746 líneas y 121 KB, el archivo de código más grande del repo por un margen amplio. Concentra cartas de símbolo, sueño, memoria, diádica y ciclo de vida. Cualquier contribuidor externo choca contra él de inmediato.
 
 No es urgente para publicar, pero conviene extraer al menos los bloques por dominio (el subsistema de símbolos de P2-1 es un buen primer corte, ya que hay que tocarlo igualmente).
 

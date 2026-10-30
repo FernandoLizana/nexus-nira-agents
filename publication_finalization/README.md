@@ -8,7 +8,7 @@ Honest finalization package for *Adaptive Behavior* (SAGE).
 
 **Reproduce:** `REPRODUCTION_README.md`, `reproduce_all.ps1` / `reproduce_all.sh`
 
-**Author:** Fernando Andrés Lizana Núñez / Digital Rider SpA / Chile  
+**Author:** Fernando Andrés Lizana Núñez / Investigador independiente / Chile  
 ORCID/funding: see `MANUSCRIPT_FACTS.md` (**AUTHOR TO CONFIRM**)
 
 Do not invent results. Do not mix compact A–C with historical 10k E1–E3 without labels. No push / keep private.

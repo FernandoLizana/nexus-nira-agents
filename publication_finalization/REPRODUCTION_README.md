@@ -1,6 +1,6 @@
 # REPRODUCTION_README — NEXO Adaptive Behavior package
 
-Author: Fernando Andrés Lizana Núñez / Digital Rider SpA / Chile  
+Author: Fernando Andrés Lizana Núñez / Investigador independiente / Chile  
 ORCID / funding: **AUTHOR TO CONFIRM** (none invented here).
 
 ## Requirements
